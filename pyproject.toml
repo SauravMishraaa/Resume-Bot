@@ -1,0 +1,13 @@
+[project]
+name = "resume-bot"
+version = "0.1.0"
+description = "A private RAG chatbot that answers questions about resume, LinkedIn and work experience — fast, factual, and source-backed."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.116.2",
+    "pydantic>=2.11.9",
+    "requests>=2.32.5",
+    "streamlit>=1.49.1",
+    "uvicorn>=0.35.0",
+]
