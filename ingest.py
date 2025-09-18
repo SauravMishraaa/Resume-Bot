@@ -36,10 +36,10 @@ def prepare_chunks(source_id, text):
 
 
 if __name__ == "__main__":
+    print("Ingesting resume...")
     with open("sauravkumar.txt", "r", encoding="utf-8") as f:
          resume_text = f.read()
     resume_text = resume_text.replace("\n", " ")    
-    # chunks = prepare_chunks("resume", resume_text)
     records = prepare_chunks("resume", resume_text)
     print(json.dumps(records, indent=2))
 

@@ -7,6 +7,7 @@ requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.116.2",
     "linkedin-scraper>=2.11.5",
+    "openai>=1.108.0",
     "pdfplumber>=0.11.7",
     "pinecone>=7.3.0",
     "pydantic>=2.11.9",
