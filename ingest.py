@@ -2,16 +2,16 @@ import os
 import json
 from sentence_transformers import SentenceTransformer
 import pypandoc
-import pinecone
+from pinecone import Pinecone, ServerlessSpec
 import pymilvus
 import dotenv
 from pymilvus import connections, FieldSchema, Collection , CollectionSchema, DataType
 dotenv.load_dotenv()
 
-VECTOR_DB = os.getenv("VECTOR_DB", "local")
+VECTOR_DB = os.getenv("VECTOR_DB", "pinecone")
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def chunk_text(text, chunk_size=500, overlap=50):
+def chunk_text(text, chunk_size=350, overlap=50):
     words = text.split()
     chunks,i = [], 0
     while i < len(words):
@@ -44,9 +44,9 @@ if __name__ == "__main__":
     print(json.dumps(records, indent=2))
 
     if VECTOR_DB == "pinecone":
-        pinecone.init(api_key=os.getenv("PINECONE_API_KEY"), environment=os.getenv("PINECONE_ENV"))
-        index = pinecone.Index("resume-bot")
+        pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+        pc.create_index("resume-bot",dimension=384, metric="cosine", spec= ServerlessSpec(cloud=os.getenv("PINECONE_CLOUD"),region=os.getenv("PINECONE_REGION")))
+        index = pc.Index("resume-bot")
         vectors = [(r['id'],r['embedding'], {"text": r['text'],"source":r['meta']['source']}) for r in records]
         index.upsert(vectors)
-    if VECTOR_DB == "milvus":
-        pass
+        print("Upserted to Pinecone")
