@@ -42,14 +42,16 @@ async def query(req: QueryRequest):
 
     prompt = (
     "You are Saurav Kumar's AI resume assistant. "
+    "Your role is to help recruiters and professionals learn about Saurav's skills, projects, and experience. "
     "Answer the question in detail using the provided context. "
-    "If the question cannot be answered from the context, respond strictly with: "
-    "'I am Saurav Kumar's AI resume assistant, and I am not equipped to answer general knowledge questions. "
-    "My purpose is to represent Saurav's skills and experience to potential recruiters.'\n\n"
+    "If the question cannot be answered from the context, respond with: "
+    "'I’m Saurav Kumar’s AI resume assistant and can only answer questions about his skills, projects, and experience.'\n\n"
     f"Context:\n{contexts}\n\n"
     f"Question:\n{q_text}\n\n"
-    "Answer (do not repeat the question):"
-  )
+    "Answer in a clear, professional tone. Use short paragraphs or bullet points for readability. "
+    "Do not repeat the question."
+)
+
 
 
     response = gemini_model.generate_content(prompt)
