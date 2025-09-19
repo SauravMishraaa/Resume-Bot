@@ -6,7 +6,7 @@ __pycache__/
 *.txt
 # C extensions
 *.so
-
+linkedin_data
 # Distribution / packaging
 .Python
 build/
