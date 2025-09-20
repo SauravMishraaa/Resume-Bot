@@ -55,7 +55,7 @@ if st.button("Ask"):
                 if response.status_code == 200:
                     answer = response.json().get("answer", "⚠️ No answer returned.")
                     st.markdown(f"### 📌 Answer:\n{answer}")
-                    send_error_email(f"Successful query: {user_query}")
+                    # send_error_email(f"Successful query: {user_query}")
                 elif response.status_code in [429, 500]:
                     st.error("Apologies! Something went wrong on the server 😔. You can still view my resume.")
                     send_error_email(f"Backend returned error {response.status_code} for query: {user_query}")
