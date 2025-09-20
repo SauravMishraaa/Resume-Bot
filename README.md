@@ -1,7 +1,7 @@
 # 🤖 AI Resume Assistant  
 
 An interactive AI-powered resume assistant built with **FastAPI**, **Pinecone**, **Gemini**, and a **Streamlit**.  
-This project allows recruiters and professionals to ask questions about Saurav Kumar’s skills, projects, and experience — and receive contextual answers directly from his resume and Linkedin.  
+This project allows recruiters and professionals to ask questions about Saurav Kumar’s skills, projects, and experience — and receive contextual answers directly from his resume and Linkedin. The chatbot replies in my tone.  
 
 ---
 
