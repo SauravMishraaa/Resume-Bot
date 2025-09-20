@@ -5,8 +5,6 @@ import dotenv
 dotenv.load_dotenv()
 
 API_URL = os.getenv("API_URL", "http://localhost:8000/query")
-
-
 RESUME_URL = os.getenv("RESUME_URL")
 
 st.set_page_config(page_title="Saurav's Resume Bot", page_icon="🤖", layout="centered")
@@ -23,15 +21,28 @@ st.markdown(
 
 st.markdown("---")
 
+# 🔹 Ask for name and email
+user_name = st.text_input("👤 Your Name")
+user_email = st.text_input("📧 Your Email")
+
 user_query = st.text_input("💬 Type your question here:", placeholder="e.g., What projects has Saurav worked on?")
 
 if st.button("Ask"):
-    if not user_query.strip():
+    if not user_name.strip() or not user_email.strip():
+        st.warning("Please provide your name and email before asking a question.")
+    elif not user_query.strip():
         st.warning("Please enter a question.")
     else:
         with st.spinner("Thinking..."):
             try:
-                response = requests.post(API_URL, json={"query": user_query})
+                response = requests.post(
+                    API_URL,
+                    json={
+                        "query": user_query,
+                        "user_name": user_name,
+                        "user_email": user_email
+                    }
+                )
                 if response.status_code == 200:
                     answer = response.json().get("answer", "⚠️ No answer returned.")
                     st.markdown(f"### 📌 Answer:\n{answer}")
