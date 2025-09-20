@@ -37,6 +37,8 @@ if st.button("Ask"):
                 if response.status_code == 200:
                     answer = response.json().get("answer", "⚠️ No answer returned.")
                     st.markdown(f"### 📌 Answer:\n{answer}")
+                elif response.status_code == 429 or response.status_code == 500:
+                    st.error("Apologies! Something went wrong on the server 😔. You can still view my resume above.")
                 else:
                     st.error(f"Error {response.status_code}: {response.text}")
             except Exception as e:
