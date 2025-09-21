@@ -25,9 +25,8 @@ This project allows recruiters and professionals to ask questions about Saurav K
 
 - **Backend**: [FastAPI](https://fastapi.tiangolo.com/)  
 - **Vector Database**: [Pinecone](https://www.pinecone.io/)  
-- **Embeddings**: [Sentence Transformers](https://www.sbert.net/) (`all-MiniLM-L6-v2`)  
-- **LLM**: [Google Gemini 1.5 Flash](https://ai.google.dev/)  
-- **Frontend**: [Streamlit](https://streamlit.io/) hosted on Hugging Face Spaces  
+- **LLM**: [Gemini](https://ai.google.dev/)  
+- **Frontend**: [Streamlit](https://streamlit.io/).
 
 ---
 Made with ❤️ using Streamlit
